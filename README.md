@@ -245,6 +245,7 @@ Pirma paleidžiama BSP_ACCELERO_Init() funkcija, kuri inicijuoja akselerometrą 
 }
 ```
 Video demonstracija:
-https://user-images.githubusercontent.com/47836357/148703935-c91a466c-57b7-4971-82b8-bcd438a440f5.mp4
+
+https://user-images.githubusercontent.com/47836357/148704938-050f9fe6-94c5-4442-a192-53e9475d4722.mp4
 
 
