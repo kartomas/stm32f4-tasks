@@ -1,3 +1,4 @@
+
 Visas užduotis atlikau su STM32CubeIDE. Pasirinkus turimą DISCOVERY plokštę, sujungimų kodas yra automatiškai sugeneruojamas, taip pat galima keisti sujungimus ir jų parametrus per grafinį interfeisą.
 # 2 Užduotis
 ***Sukurkite sekundės periodo laikmatį. Jam veikiant, šviestukas periodiškai įjungiamas 50 ms ir išjungiamas 950 ms***
@@ -89,7 +90,8 @@ void loop() {
   delay(200);
 }
 ```
-iš nuskaitomos digital vertės į analog galime paversti pagal formulę: <img src="https://render.githubusercontent.com/render/math?math=V_{in} = Digital\ Value \times \frac{V_{ref}} {2^N}">
+iš nuskaitomos digital vertės į analog galime paversti pagal formulę:
+ <img src="https://render.githubusercontent.com/render/math?math=V_{in} = Digital\ Value \times \frac{V_{ref}} {2^N}">
 N  - ADC bitų skaičius, šiuo atvėju 10. Pagal ATMega328P datasheet 1 atimti nereikia.
 
 ## Pagrindinis kodas
@@ -118,7 +120,9 @@ Arduino nuskaitė STM32 plokštės VDD pin'o vertę (operating voltage) kaip lyg
  - 1.5V
  - 2.25V
  - 3V
-Analog vertę išreikšti digital skaičiumi galime pagal formulę: <img src="https://render.githubusercontent.com/render/math?math=Digital\ Value = V_{out} \times \frac {2^N}{V_{ref}} ">
+ 
+Analog vertę išreikšti digital skaičiumi galime pagal formulę:
+ <img src="https://render.githubusercontent.com/render/math?math=Digital\ Value = V_{out} \times \frac {2^N}{V_{ref}} ">
 Nustatome PA4 pin'ą kaip DAC_OUT1. Main funkcijoje startuojame DAC su:
  `  HAL_DAC_Start(&hdac, DAC_CHANNEL_1);`
 Naudodami switch statement'ą pagrindiniam loop'e nustatome išėjimo vertę pagal mygtuo paspaudimų skaičių:
