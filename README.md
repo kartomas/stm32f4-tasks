@@ -35,7 +35,7 @@ void SysTick_Handler(void)
 ```
 ## 2.3 Rezultatą pasiekite taikydami: HAL_TIM_PeriodElapsedCallback()
     
-Naudodami GUI sukuriame naują timerį. Kad kodas būtų šiek tiek kitoks nei praitame punkte, galime jį sukonfiguruoti kad jis "tiksėtų" kas 50ms. Kadangi base clock yra 168MHZ, tą pasiekiame nustatydami prescaler = 168 ir counter period = 50000, taip pat 5jungiame interrupt. Startuojame timerį su:
+Naudodami GUI sukuriame naują timerį. Kad kodas būtų šiek tiek kitoks nei praitame punkte, galime jį sukonfiguruoti kad jis "tiksėtų" kas 50ms. Kadangi base clock yra 168MHZ, tą pasiekiame nustatydami prescaler = 168 ir counter period = 50000, taip pat įjungiame interrupt opciją. Startuojame timerį su:
 `HAL_TIM_Base_Start_IT(&htim10);`
 ir aprašome analogišką funkciją kaip ir 2.2
 ```c
@@ -59,8 +59,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 }
 ```
 Video demonstracija:
+https://user-images.githubusercontent.com/47836357/148704352-c400b2b7-6392-49d6-a012-c114110a9aa0.mp4
 
-https://user-images.githubusercontent.com/47836357/148703850-0a8df85e-8437-46c2-a3b6-241d6951ba0f.mp4
+Mėlynas ir žalias LED'ai (kontroliuojami timer'ių) laikui bėgant lieka susisinchronizavę, tačiau raudonas (įjungiamas su HAL_DELAY() ) išsderina. Taip yra todėl, nes timer'iai visada "tiksi" vienodu tempu. Raudono LED'o junginėjimas main loop'e neatsižvelgia į tai, kad LED'o įjungimas ar išjungimas (ir galimai pats HAL_DELAY() iššaukimas) užtrunka tam tikrą sekundės ųdalį. Dėl to laikui bėgant šis neatitikimas pereina į matoma nukrypimą nuo kitų LED'ų.
 
 
 # 3 Užduotis 
@@ -68,7 +69,7 @@ https://user-images.githubusercontent.com/47836357/148703850-0a8df85e-8437-46c2-
 
 
 ## Arduino ADC
-Kad parodyti DAC išėjimo įtampa panaudojau Arduino Uno. Nuskaitome analog input piną ir konvertuojame iš digital vertės į analoginę dešimtainę vertę. Rezultatą nusiunčiame per serial port'ą.
+Kad parodyti DAC išėjimo įtampą panaudojau Arduino Uno. Nuskaitome analog input piną ir konvertuojame iš digital vertės į analoginę dešimtainę vertę. Rezultatą nusiunčiame per serial port'ą.
 ```c
 int analog_pin = A5;
 int val = 0;
@@ -85,7 +86,7 @@ void loop() {
   delay(200);
 }
 ```
-iš digital vertės į analog galime pagal formulę $$ V_{in} = Digital\ Value \times \frac{V_{ref}} {2^N} $$
+iš nuskaitomos digital vertės į analog galime paversti pagal formulę: $$ V_{in} = Digital\ Value \times \frac{V_{ref}} {2^N} $$
 N  - ADC bitų skaičius, šiuo atvėju 10. Pagal ATMega328P datasheet 1 atimti nereikia.
 
 ## Pagrindinis kodas
@@ -158,7 +159,10 @@ Naudodami switch statement'ą pagrindiniam loop'e nustatome išėjimo vertę pag
 }
 ```
 Video demonstracija:
-https://user-images.githubusercontent.com/47836357/148703932-fc3804b9-f2c0-4b7a-a549-bbb7324f7f50.mp4
+
+https://user-images.githubusercontent.com/47836357/148704399-c7c221b0-a816-47a8-8d3d-c2a85ae353e3.mp4
+
+
 
 # 4 užduotis
 ***Susipažinę su garso keitiklio aprašymu, gaukite Chip I.D registro turinį.***
