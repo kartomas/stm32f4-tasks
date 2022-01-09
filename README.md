@@ -86,7 +86,7 @@ void loop() {
   delay(200);
 }
 ```
-iš nuskaitomos digital vertės į analog galime paversti pagal formulę: $$ V_{in} = Digital\ Value \times \frac{V_{ref}} {2^N} $$
+iš nuskaitomos digital vertės į analog galime paversti pagal formulę: <img src="https://render.githubusercontent.com/render/math?math=V_{in} = Digital\ Value \times \frac{V_{ref}} {2^N}">
 N  - ADC bitų skaičius, šiuo atvėju 10. Pagal ATMega328P datasheet 1 atimti nereikia.
 
 ## Pagrindinis kodas
@@ -115,7 +115,7 @@ Arduino nuskaitė STM32 plokštės VDD pin'o vertę (operating voltage) kaip lyg
  - 1.5V
  - 2.25V
  - 3V
-Analog vertę išreikšti digital skaičiumi galime pagal formulę: $$ Digital\ Value = V_{out} \times \frac {2^N}{V_{ref}} $$
+Analog vertę išreikšti digital skaičiumi galime pagal formulę: <img src="https://render.githubusercontent.com/render/math?math=Digital\ Value = V_{out} \times \frac {2^N}{V_{ref}} ">
 Nustatome PA4 pin'ą kaip DAC_OUT1. Main funkcijoje startuojame DAC su:
  `  HAL_DAC_Start(&hdac, DAC_CHANNEL_1);`
 Naudodami switch statement'ą pagrindiniam loop'e nustatome išėjimo vertę pagal mygtuo paspaudimų skaičių:
@@ -210,7 +210,9 @@ Kad įjungti DAC, pirma nustatome RESET pin į 1 (high). Tada naudodami I2C komu
 ```
 
 Rezultatas, kaip ir tikėtasi, yra 1c (šešioliktainėje sistemoje).
-![image](https://user-images.githubusercontent.com/47836357/148701677-14fe2643-f422-4da1-ba03-153bbc75968a.png)
+<p align="center">
+<img src="https://user-images.githubusercontent.com/47836357/148701677-14fe2643-f422-4da1-ba03-153bbc75968a.png">
+</p>
 # 5 Užduotis
 ***Susipažinę su judesio jutiklio aprašymu, gaukite vienos ašies pagreitį***
 STM savo plokštėms duoda Board Support Package. Tai yra driverių paketas, kuris leidžia vartotojams lengvai kontroliuoti išorinius įrenginius. "The BSP (board support package) drivers are part of the STM32Cube MCU and MPU Packages based on the HAL drivers, and provide a set of high-level APIs relative to the hardware components and features [...]. The BSP drivers allow quick access to the board services using high-level APIs, without any specific configuration as the link with the HAL and the external components is made intrinsically within the driver." Kad neišradinėti dviračio ir nebandyti perrašinėti kodo, šioje užduotyje naudojau BSP suteikiamas funkcijas. Jas į projektą galima įsikelti iš STM32CubeIDE automatiškai atsiūsto paketo, tačiau reikalingus failus įkeliau į patį projektą, kad nieko nereiktų papildomai daryti.
