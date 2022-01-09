@@ -220,6 +220,7 @@ Rezultatas, kaip ir tikėtasi, yra 1c (šešioliktainėje sistemoje).
 <p align="center">
 <img src="https://user-images.githubusercontent.com/47836357/148701677-14fe2643-f422-4da1-ba03-153bbc75968a.png">
 </p>
+
 # 5 Užduotis
 ***Susipažinę su judesio jutiklio aprašymu, gaukite vienos ašies pagreitį***
 STM savo plokštėms duoda Board Support Package. Tai yra driverių paketas, kuris leidžia vartotojams lengvai kontroliuoti išorinius įrenginius. "The BSP (board support package) drivers are part of the STM32Cube MCU and MPU Packages based on the HAL drivers, and provide a set of high-level APIs relative to the hardware components and features [...]. The BSP drivers allow quick access to the board services using high-level APIs, without any specific configuration as the link with the HAL and the external components is made intrinsically within the driver." Kad neišradinėti dviračio ir nebandyti perrašinėti kodo, šioje užduotyje naudojau BSP suteikiamas funkcijas. Jas į projektą galima įsikelti iš STM32CubeIDE automatiškai atsiūsto paketo, tačiau reikalingus failus įkeliau į patį projektą, kad nieko nereiktų papildomai daryti.
