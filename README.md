@@ -59,7 +59,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 }
 ```
 Video demonstracija:
-https://user-images.githubusercontent.com/47836357/148704352-c400b2b7-6392-49d6-a012-c114110a9aa0.mp4
+
+https://user-images.githubusercontent.com/47836357/148704899-241ea4f6-e860-4c87-9bb9-e217f03dbdaa.mp4
+
+
 
 Mėlynas ir žalias LED'ai (kontroliuojami timer'ių) laikui bėgant lieka susisinchronizavę, tačiau raudonas (įjungiamas su HAL_DELAY() ) išsderina. Taip yra todėl, nes timer'iai visada "tiksi" vienodu tempu. Raudono LED'o junginėjimas main loop'e neatsižvelgia į tai, kad LED'o įjungimas ar išjungimas (ir galimai pats HAL_DELAY() iššaukimas) užtrunka tam tikrą sekundės ųdalį. Dėl to laikui bėgant šis neatitikimas pereina į matoma nukrypimą nuo kitų LED'ų.
 
